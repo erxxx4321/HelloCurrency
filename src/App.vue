@@ -29,28 +29,18 @@
 </template>
 
 <script>
+import { currency } from "./currency";
+const currencyOptions = currency.map((item) => {
+	return { value: item, text: item };
+});
+
 export default {
 	data() {
 		return {
-			selected: null,
-			options: [
-				{ value: null, text: "Please select an option" },
-				{ value: "a", text: "This is First option" },
-				{ value: "b", text: "Selected Option" },
-				{
-					value: { C: "3PO" },
-					text: "This is an option with object value"
-				},
-				{ value: "d", text: "This one is disabled" },
-				{
-					label: "Grouped options",
-					options: [
-						{ value: { C: "3PO" }, text: "Option with value" }
-					]
-				}
-			]
+			selected: "AUD",
+			options: currencyOptions,
 		};
-	}
+	},
 };
 </script>
 
