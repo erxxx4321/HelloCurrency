@@ -1,5 +1,5 @@
 <template>
-	<div class="hc-bg p-2" style="height: 100vh">
+	<div class="hc-bg p-2">
 		<Index />
 	</div>
 </template>
