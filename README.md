@@ -1,5 +1,7 @@
 # Hello Currency
 
+[![demo](demo.png)](https://hellocurrency.netlify.app)<br><br>
+
 ## Project setup
 
 ```
@@ -24,6 +26,8 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
+### Main feature
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+-   [x] Vuex
+-   [x] Chart.js - Line Chart
+-   [x] Frankfurter currency exchange rate API

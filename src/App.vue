@@ -12,6 +12,9 @@ export default {
 };
 </script>
 <style>
+html {
+	background: #3c6e71;
+}
 .hc-bg {
 	background: #3c6e71;
 }
