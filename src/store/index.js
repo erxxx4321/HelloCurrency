@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import currencyApi from "@/api";
+import { getSpecificDate } from "@/utils";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -11,7 +12,7 @@ export default new Vuex.Store({
 		currencyOptions: [],
 		convertedRate: "",
 		chartData: null,
-		startDate: "",
+		startDate: getSpecificDate(6),
 	},
 	mutations: {
 		setFromSelect(state, newValue) {
@@ -25,9 +26,6 @@ export default new Vuex.Store({
 		},
 		setConvertedRate(state, newValue) {
 			state.convertedRate = newValue;
-		},
-		setStartDate(state, newValue) {
-			state.startDate = newValue;
 		},
 		setChartData(state, newValue) {
 			state.chartData = newValue;
@@ -77,20 +75,14 @@ export default new Vuex.Store({
 					{
 						data: currencyRate,
 						backgroundColor: "rgba(0, 0, 0, 0.0)",
-						borderColor: "#42b983",
+						borderColor: "#3c6e71",
 						lineTension: 0,
-						pointBorderColor: "red",
-						pointBackgroundColor: "yellow",
+						pointBorderColor: "#284b63",
+						pointBackgroundColor: "#fff",
+						color: "#fff",
 					},
 				],
 			});
-		},
-		getStartDate({ commit }) {
-			const today = new Date();
-			const startDate = new Date(today);
-			startDate.setDate(startDate.getDate() - 6);
-
-			commit("setStartDate", startDate.toJSON().slice(0, 10));
 		},
 	},
 });

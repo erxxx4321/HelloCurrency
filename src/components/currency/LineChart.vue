@@ -5,15 +5,6 @@ const { reactiveProp } = mixins;
 
 export default {
 	name: "Chart",
-	data() {
-		return {
-			chartOptions: {
-				legend: {
-					display: false,
-				},
-			},
-		};
-	},
 	mixins: [Line, reactiveProp],
 	props: {
 		chartdata: {

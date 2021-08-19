@@ -1,39 +1,68 @@
 <template>
-	<b-container fluid="md sm" class="w-75 p-5">
-		<h1 class="text-center mb-5 text-primary">Hello Currency</h1>
-		<Converter />
-		<div class="d-flex flex-row justify-content-center align-items-center">
-			<label>Start date: </label>
-			<input
-				type="date"
-				class="m-2"
-				v-model="startDate"
-				:max="startDate"
-			/>
-			<button @click="updateChart">refresh</button>
-		</div>
-		<LineChart
-			:chartData="chartData"
-			:options="chartOptions"
-			:height="200"
-		/>
-	</b-container>
+	<div>
+		<h1 class="text-center p-4 text-light">Hello Currency</h1>
+		<b-container class="shadow rounded w-75 bg-light">
+			<Converter />
+			<div class="d-flex flex-column justify-content-center p-3">
+				<div
+					class="
+						d-flex
+						flex-row
+						justify-content-center
+						align-items-center
+					"
+				>
+					<label>Start date: </label>
+					<input
+						type="date"
+						class="m-2 border border-light shadow-sm p-1"
+						v-model="startDate"
+						:max="maxDate"
+						:min="minDate"
+					/>
+					<button
+						@click="updateChart"
+						class="
+							hc-bg
+							text-light
+							border border-light
+							rounded
+							p-1
+							shadow
+							hc-hover
+						"
+					>
+						refresh
+					</button>
+				</div>
+				<LineChart
+					:chartData="chartData"
+					:options="chartOptions"
+					:height="80"
+					:width="220"
+				/>
+			</div>
+		</b-container>
+	</div>
 </template>
 <script>
 import Converter from "./currency/Converter.vue";
 import LineChart from "./currency/LineChart.vue";
+import { getSpecificDate } from "@/utils";
 import { mapActions, mapState } from "vuex";
 
 export default {
 	components: { Converter, LineChart },
 	data() {
 		return {
-			...mapState(["from", "chartData"]),
+			...mapState(["from", "chartData", "chartOptions"]),
 			chartOptions: {
 				legend: {
 					display: false,
 				},
 			},
+			maxDate: getSpecificDate(3),
+			minDate: getSpecificDate(360),
 		};
 	},
 	computed: {
@@ -47,7 +76,7 @@ export default {
 		},
 	},
 	methods: {
-		...mapActions(["getHistoryRate", "getStartDate"]),
+		...mapActions(["getHistoryRate"]),
 		updateChart() {
 			this.getHistoryRate({
 				startDate: this.startDate,
@@ -55,9 +84,6 @@ export default {
 				toSelect: this.$store.state.toSelect,
 			});
 		},
-	},
-	created() {
-		this.getStartDate();
 	},
 	mounted() {
 		this.getHistoryRate({
@@ -68,3 +94,4 @@ export default {
 	},
 };
 </script>
+<style lang="css"></style>

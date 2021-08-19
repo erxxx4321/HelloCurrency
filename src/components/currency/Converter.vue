@@ -1,44 +1,35 @@
 <template>
 	<b-container
 		fluid="md sm"
-		class="
-			shadow
-			p-2
-			mb-5
-			rounded
-			d-flex
-			flex-column
-			align-items-center
-			w-75
-		"
+		class="p-4 d-flex flex-column align-items-center w-75"
 	>
 		<b-row id="from" class="m-3" align-v="center" align-h="center">
 			<b-col>
 				<b-form-input
-					class="border border-light p-2 mb-3"
+					class="border border-light p-2 mb-3 shadow-sm"
 					v-model="from"
 				></b-form-input>
 			</b-col>
 			<b-col>
 				<b-form-select
-					class="border border-light p-2 mb-3"
+					class="border border-light p-2 mb-3 shadow-sm"
 					v-model="fromSelect"
 					:options="currencyOptions"
 				>
 				</b-form-select>
 			</b-col>
 		</b-row>
-		<b-row id="to" class="m-3" align-v="center" align-h="center">
+		<b-row id="to" align-v="center" align-h="center">
 			<b-col>
 				<b-form-input
-					class="border border-light p-2 mb-3"
+					class="border border-light p-2 mb-3 shadow-sm"
 					:placeholder="convertedRate"
 					:value="convertedRate"
 				></b-form-input>
 			</b-col>
 			<b-col>
 				<b-form-select
-					class="border border-light p-2 mb-3"
+					class="border border-light p-2 mb-3 shadow-sm"
 					v-model="toSelect"
 					:options="currencyOptions"
 				></b-form-select>
